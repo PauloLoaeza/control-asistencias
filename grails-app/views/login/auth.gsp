@@ -54,7 +54,7 @@
             </div>
         </form>
 
-        <a href="#">Olvidé mi contraseña</a>
+        <a href="${createLink(uri: '/olvidePassword')}">Olvidé mi contraseña</a>
 
     </div>
     <!-- /.login-box-body -->
