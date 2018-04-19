@@ -69,7 +69,9 @@
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">&nbsp;&nbsp;&nbsp;Mi perfil&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="${createLink(uri: '/perfil')}" class="btn btn-default btn-flat">
+                                                &nbsp;&nbsp;&nbsp;Mi perfil&nbsp;&nbsp;&nbsp;
+                                            </a>
                                         </div>
                                         <div class="pull-right">
                                             <g:form controller="logout">
