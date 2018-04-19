@@ -39,7 +39,7 @@
                         <b>Desde</b> <a class="pull-right">18/04/2018</a>
                     </li>
                 </ul>
-                <a href="#" class="btn btn-primary btn-block">Editar</a>
+                <a href="${createLink(uri: '/perfil/editar')}" class="btn btn-primary btn-block">Editar</a>
             </div>
         </div>
     </div>

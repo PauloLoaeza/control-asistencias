@@ -11,4 +11,8 @@ class PerfilController {
         [usuario: springSecurityService.currentUser]
     }
 
+    @Secured(['IS_AUTHENTICATED_FULLY'])
+    def editar() {
+        [usuario: springSecurityService.currentUser]
+    }
 }
