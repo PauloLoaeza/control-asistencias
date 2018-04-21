@@ -2,7 +2,6 @@ package com.tecnosalle
 
 import grails.gorm.transactions.Transactional
 import grails.plugin.springsecurity.annotation.Secured
-import org.springframework.transaction.interceptor.TransactionAspectSupport
 
 @Secured(['IS_AUTHENTICATED_FULLY'])
 class PerfilController {
@@ -42,5 +41,27 @@ class PerfilController {
         flash.message = "Su información ha sido actualizada correctamente"
 
         redirect(action: "index")
+    }
+
+    @Transactional
+    def actualizarPassword(PerfilCommand command) {
+        if (command.hasErrors()) {
+            flash.icon = "warning"
+            flash.messageType = "warning"
+            flash.title = "Contraseña no actualizada"
+            flash.message = "La contraseña no se pudo actualizar. Verifica la información proporcionada"
+
+            redirect(action: "index", fragment: 'cambiar')
+            return
+        }
+
+        command.actualizarPassword()
+
+        flash.icon = "check"
+        flash.messageType = "success"
+        flash.title = "Contraseña actualizada"
+        flash.message = "La contraseña ha sido actualizada correctamente"
+
+        redirect(action: "index", fragment: 'cambiar')
     }
 }

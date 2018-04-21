@@ -127,22 +127,15 @@
                     </div>
                 </g:if>
                 <div class="tab-pane" id="cambiar">
-                    <form role="form">
-                        <div class="form-group">
-                            <label for="actual">Contraseña actual</label>
-                            <input type="password" class="form-control" id="actual" name="actual" placeholder="Contraseña actual">
-                        </div>
-                        <div class="form-group">
-                            <label for="nueva">Nueva contraseña</label>
-                            <input type="password" class="form-control" id="nueva" name="nueva" placeholder="Nueva contraseña">
-                        </div>
-                        <div class="form-group">
-                            <label for="confirmar">Confirmar contraseña</label>
-                            <input type="password" class="form-control" id="confirmar" name="confirmar" placeholder="Confirmar contraseña">
-                        </div>
-
+                    <g:set var="command" value="${new com.tecnosalle.PerfilCommand() }" />
+                    <g:form action="actualizarPassword" method="post">
+                        <f:with bean="command">
+                            <f:field property="password" label="Contraseña"/>
+                            <f:field property="newPassword" label="Nueva contraseña"/>
+                            <f:field property="confirmPassword" label="Confirmar contraseña"/>
+                        </f:with>
                         <input type="submit" class="btn btn-primary btn-flat btn-block" value="Guardar cambios" />
-                    </form>
+                    </g:form>
                 </div>
             </div>
         </div>
