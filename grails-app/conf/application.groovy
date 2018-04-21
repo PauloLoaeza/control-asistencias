@@ -34,3 +34,14 @@ grails.gorm.default.constraints = {
 	domicilio nullable: false, size: 3..40
 	personName nullable: false, size: 3..35, matches: "^[a-zA-ZáéíóúÁÉÍÓÚ ']+\$"
 }
+
+grails.mail.host = 'smtp.gmail.com'
+grails.mail.port = 465
+grails.mail.username = 'tecnosalle.help@gmail.com'
+grails.mail.password = 'ulsaoaxaca'
+grails.mail.props = [
+		"mail.smtp.auth":"true",
+		"mail.smtp.socketFactory.port": "465",
+		"mail.smtp.socketFactory.class": "javax.net.ssl.SSLSocketFactory",
+		"mail.smtp.socketFactory.fallback": "false"
+]

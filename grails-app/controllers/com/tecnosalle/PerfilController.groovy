@@ -7,6 +7,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class PerfilController {
 
     def springSecurityService
+    def mailService
 
     def index() {
         [usuario: Empleado.findByUsuario(springSecurityService.currentUser)]
@@ -46,6 +47,8 @@ class PerfilController {
     @Transactional
     def actualizarPassword(PerfilCommand command) {
         if (command.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+
             flash.icon = "warning"
             flash.messageType = "warning"
             flash.title = "Contraseña no actualizada"
@@ -63,5 +66,34 @@ class PerfilController {
         flash.message = "La contraseña ha sido actualizada correctamente"
 
         redirect(action: "index", fragment: 'cambiar')
+    }
+
+    @Transactional
+    @Secured("permitAll")
+    def recuperarPassword(String email) {
+
+        def usuario = Usuario.findByUsername(email)
+        if (!usuario) {
+            flash.icon = "warning"
+            flash.messageType = "warning"
+            flash.title = "Usuario no encontrado"
+            flash.message = "Lo sentimos, no hemos encontrado un usuario con el correo proporcionado. Por favor intente de nuevo"
+
+            redirect(uri: '/olvidePassword')
+            return
+        }
+
+        mailService.sendMail {
+            to email
+            subject 'Recuperación de password'
+            html view: '/emails/recuperarPassword', model: [usuario: usuario]
+        }
+
+        flash.icon = "check"
+        flash.messageType = "success"
+        flash.title = "Correo enviado"
+        flash.message = "Hemos enviado un correo con la información necesaria para recuperar su cuenta"
+
+        redirect(uri: '/olvidePassword')
     }
 }

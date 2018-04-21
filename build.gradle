@@ -67,6 +67,7 @@ dependencies {
     //non-default
     compile "org.grails.plugins:spring-security-core:3.2.1"
     compile "org.postgresql:postgresql:42.1.4"
+    compile 'org.grails.plugins:mail:2.0.0'
 }
 
 bootRun {

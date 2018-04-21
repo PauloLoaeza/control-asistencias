@@ -23,6 +23,15 @@
     <div class="lockscreen-logo">
         <a href="${createLink(uri: '/')}"><b>Sistema de control de asistencias</b></a>
     </div>
+
+    <g:if test="${flash.message}">
+        <div class="alert alert-${flash.messageType} alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-${flash.icon}"></i>${flash.title}</h4>
+            ${flash.message}
+        </div>
+    </g:if>
+
     <!-- User name -->
     <div class="lockscreen-name">Recuperar contraseña</div>
 
@@ -35,15 +44,15 @@
         <!-- /.lockscreen-image -->
 
         <!-- lockscreen credentials (contains the form) -->
-        <form class="lockscreen-credentials">
+        <g:form method="post" class="lockscreen-credentials" controller="perfil" action="recuperarPassword">
             <div class="input-group">
-                <input type="email" class="form-control" placeholder="Correo electrónico">
+                <input type="email" name="email" class="form-control" placeholder="Correo electrónico">
 
                 <div class="input-group-btn">
-                    <button type="button" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+                    <button type="submit" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
                 </div>
             </div>
-        </form>
+        </g:form>
         <!-- /.lockscreen credentials -->
 
     </div>
