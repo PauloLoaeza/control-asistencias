@@ -28,101 +28,67 @@
             <div class="box-body box-profile">
                 <asset:image src="user.png" class="profile-user-img img-responsive img-circle" alt="imagen usuario" />
 
-                <h3 class="profile-username text-center">Nombre Apellido</h3>
+                <h3 class="profile-username text-center">${empleado}</h3>
 
-                <p class="text-muted text-center">Cargo</p>
+                <p class="text-muted text-center">${empleado.cargo}</p>
 
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <b>Código</b> <a class="pull-right">#156165</a>
+                        <b>Código</b> <a class="pull-right">${empleado.codigo}</a>
                     </li>
                     <li class="list-group-item">
-                        <b>Desde</b> <a class="pull-right">18/04/2018</a>
+                        <b>Desde</b>
+                        <a class="pull-right"><g:formatDate date="${empleado.dateCreated}" format="dd/MM/yyyy" /></a>
                     </li>
                 </ul>
 
-                <input type="submit" form="datos" class="btn btn-primary btn-block" value="Guardar" />
+                <input type="submit" form="guardarCambios" class="btn btn-primary btn-block" value="Guardar" />
             </div>
         </div>
     </div>
 
     <div class="col-md-9">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">Editar información</h3>
-            </div>
-            <div class="box-body">
-                <form id="datos" role="form" method="post">
-                    <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
-                    </div>
-                    <div class="form-group">
-                        <label for="paterno">Apellido paterno</label>
-                        <input type="text" class="form-control" id="paterno" name="paterno" placeholder="Apellido paterno">
-                    </div>
-                    <div class="form-group">
-                        <label for="materno">Apellido materno</label>
-                        <input type="text" class="form-control" id="materno" name="materno" placeholder="Apellido materno">
-                    </div>
-                    <div class="form-group">
-                        <label for="genero">Género</label>
-                        <input type="text" class="form-control" id="genero" name="genero" placeholder="Género">
-                    </div>
-                    <div class="form-group">
-                        <label for="correo">Correo electrónico</label>
-                        <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo electrónico">
-                    </div>
-                    <div class="form-group">
-                        <label for="local">Teléfono local</label>
-                        <input type="text" class="form-control" id="local" name="local" placeholder="Teléfono local">
-                    </div>
-                    <div class="form-group">
-                        <label for="movil">Teléfono móvil</label>
-                        <input type="text" class="form-control" id="movil" name="movil" placeholder="Teléfono móvil">
-                    </div>
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#personal" data-toggle="tab" aria-expanded="true">Información personal</a>
+                </li>
+                <li>
+                    <a href="#domicilio" data-toggle="tab" aria-expanded="false">Mi domicilio</a>
+                </li>
+            </ul>
 
-                    <hr class="separator">
-
-                    <div class="form-group">
-                        <label for="calle">Calle</label>
-                        <input type="text" class="form-control" id="calle" name="calle" placeholder="Calle">
-                    </div>
-                    <div class="form-group">
-                        <label for="colonia">Colonia</label>
-                        <input type="text" class="form-control" id="colonia" name="colonia" placeholder="Colonia">
-                    </div>
-                    <div class="form-group">
-                        <label for="municipio">Municipio</label>
-                        <input type="text" class="form-control" id="municipio" name="municipio" placeholder="Municipio">
-                    </div>
-                    <div class="form-group">
-                        <label for="entidad">Entidad Federativa</label>
-                        <input type="text" class="form-control" id="entidad" name="enotidad" placeholder="Entidad federativa">
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exterior">Número exterior</label>
-                                <input type="text" class="form-control" id="exterior" name="exterior" placeholder="# exterior">
+            <g:form name="guardarCambios" action="guardar" method="post">
+                <g:hiddenField name="id" value="${empleado.id}" />
+                <f:with bean="empleado">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="personal">
+                            <div class="margin">
+                                <f:field property="nombre" />
+                                <f:field property="apellidoPaterno" />
+                                <f:field property="apellidoMaterno" />
+                                <f:field property="genero" label="Género"/>
+                                <f:field property="usuario.username" label="Correo electrónico"/>
+                                <f:field property="telefonoCasa" label="Teléfono local" />
+                                <f:field property="telefonoCelular" label="Teléfono móvil"/>
+                                <br>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="interior">Número interior</label>
-                                <input type="text" class="form-control" id="interior" name="interior" placeholder="# interior">
+                        <div class="tab-pane" id="domicilio">
+                            <div class="margin">
+                                <f:field property="domicilio.calle" />
+                                <f:field property="domicilio.colonia" />
+                                <f:field property="domicilio.municipio" />
+                                <f:field property="domicilio.entidadFederativa" />
+                                <f:field property="domicilio.numeroExterior" label="Número exterior"/>
+                                <f:field property="domicilio.numeroInterior" label="Número interior" />
+                                <f:field property="domicilio.codigoPostal" label="Código postal"/>
+                                <br>
                             </div>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="cp">Código postal</label>
-                        <input type="text" class="form-control" id="cp" name="cp" placeholder="Código postal">
-                    </div>
-
-                </form>
-            </div>
+                </f:with>
+            </g:form>
         </div>
     </div>
 </div>
@@ -131,8 +97,7 @@
 
 
 <content tag="scripts">
+
 </content>
-
-
 </body>
 </html>

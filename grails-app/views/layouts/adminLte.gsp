@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html style="height: auto; min-height: 100%;">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><g:layoutTitle /></title>
     <!-- Tell the browser to be responsive to screen width -->
@@ -19,9 +19,13 @@
     <asset:stylesheet src="admin-lte/skins/_all-skins.min.css" />
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <g:layoutHead />
 </head>
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body class="layout-top-nav skin-red-light" style="height: auto; min-height: 100%;">
+
+<g:set var="springSecurityService" bean="springSecurityService" />
 <div class="wrapper" style="height: auto; min-height: 100%;">
     <header class="main-header">
         <nav class="navbar navbar-static-top">
@@ -52,17 +56,16 @@
                                     <!-- The user image in the navbar-->
                                     <asset:image src="user.png" class="user-image" alt="Imagen usuario" />
                                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                    <span class="hidden-xs"><sec:loggedInUserInfo field="username"/></span>
+                                    <span class="hidden-xs">${springSecurityService.currentUser.empleado}</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- The user image in the menu -->
                                     <li class="user-header">
                                         <asset:image src="user.png" class="img-circle" alt="Imagen usuario" />
                                         <p>
-                                            <sec:loggedInUserInfo field="username" />
+                                            ${springSecurityService.currentUser.empleado.nombreCompleto}
                                             <small>
-                                                <g:set var="springSecurityService" bean="springSecurityService" />
-                                                ${springSecurityService.getPrincipal().getAuthorities()}
+                                                ${springSecurityService.currentUser.username}
                                             </small>
                                         </p>
                                     </li>

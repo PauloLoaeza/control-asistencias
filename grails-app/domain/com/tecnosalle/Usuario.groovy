@@ -18,13 +18,15 @@ class Usuario implements Serializable {
     boolean accountLocked
     boolean passwordExpired
 
+    static belongsTo = [empleado: Empleado]
+
     Set<Rol> getAuthorities() {
         (UsuarioRol.findAllByUsuario(this) as List<UsuarioRol>)*.rol as Set<Rol>
     }
 
     static constraints = {
         password nullable: false, blank: false, password: true
-        username nullable: false, blank: false, unique: true
+        username nullable: false, blank: false, unique: true, email: true
     }
 
     static mapping = {
