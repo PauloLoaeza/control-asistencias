@@ -1,17 +1,16 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html>
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<s2ui:stylesheet src='spring-security-ui-register.css'/>
-<g:layoutHead/>
+	<title><g:layoutTitle /></title>
+
+	<g:layoutHead/>
 </head>
-<body>
-		<p/>
+<body class="hold-transition lockscreen">
 		<g:layoutBody/>
-<asset:javascript src='spring-security-ui-register.js'/>
+
 <s2ui:showFlash/>
 <s2ui:deferredScripts/>
 </body>

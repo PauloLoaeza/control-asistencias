@@ -47,3 +47,4 @@ grails.mail.props = [
 ]
 
 grails.plugin.springsecurity.ui.password.validationRegex='^([a-zA-Z0-9ñ])+$'
+
