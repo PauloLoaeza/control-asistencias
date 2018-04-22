@@ -25,14 +25,6 @@
 		<a href="${createLink(uri: '/')}"><strong>Sistema de control de asistencias</strong></a>
 	</div>
 
-	<g:if test="${flash.message}">
-		<div class="alert alert-warning alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			<h4><i class="icon fa fa-warning"></i>No se pudo iniciar sesión</h4>
-			${flash.message}
-		</div>
-	</g:if>
-
 	<div class="login-box-body">
 		<p class="login-box-msg">Escriba su nueva contraseña</p>
 
@@ -46,23 +38,6 @@
 			<button type="submit" class="btn btn-primary btn-block btn-flat">Actualizar contraseña</button>
 
 		</g:form>
-
-		<%--
-		<s2ui:formContainer type='resetPassword' focus='password' width='475px'>
-			<s2ui:form beanName='resetPasswordCommand'>
-				<g:hiddenField name='t' value='${token}'/>
-				<div class="sign_in">
-					<br/>
-					<h3><g:message code='spring.security.ui.resetPassword.description'/></h3>
-					<table>
-						<s2ui:passwordFieldRow name='password' labelCodeDefault='Password'/>
-						<s2ui:passwordFieldRow name='password2' labelCodeDefault='Password (again)'/>
-					</table>
-					<s2ui:submitButton elementId='submit' messageCode='spring.security.ui.resetPassword.submit'/>
-				</div>
-			</s2ui:form>
-		</s2ui:formContainer>
-		--%>
 	</div>
 	<!-- /.login-box-body -->
 </div>

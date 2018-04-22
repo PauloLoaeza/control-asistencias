@@ -46,5 +46,6 @@ grails.mail.props = [
 		"mail.smtp.socketFactory.fallback": "false"
 ]
 
+grails.plugin.springsecurity.ui.password.minLength=5
 grails.plugin.springsecurity.ui.password.validationRegex='^([a-zA-Z0-9ñ])+$'
-
+grails.plugin.springsecurity.ui.forgotPassword.emailSubject='Reestablecer contrase\u00f1a'

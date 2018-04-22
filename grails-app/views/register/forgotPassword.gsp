@@ -31,45 +31,38 @@
 			Hemos enviado un correo con la información necesaria para recuperar su cuenta
 		</div>
 	</g:if>
+	<g:else>
+		<!-- User name -->
+		<div class="lockscreen-name">Recuperar contraseña</div>
 
-	<g:if test='${forgotPasswordCommand.hasErrors()}'>
-		<div class="alert alert-warning alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			<h4><i class="icon fa fa-warning"></i>No se ha podido enviar el correo</h4>
-			<g:eachError bean="forgotPasswordCommand">
-				<li>${it}</li>
-			</g:eachError>
-		</div>
-	</g:if>
-	
-	<!-- User name -->
-	<div class="lockscreen-name">Recuperar contraseña</div>
-
-	<!-- START LOCK SCREEN ITEM -->
-	<div class="lockscreen-item">
-		<!-- lockscreen image -->
-		<div class="lockscreen-image">
-			<asset:image src="user.png" alt="imagen usuario" />
-		</div>
+		<!-- START LOCK SCREEN ITEM -->
+		<div class="lockscreen-item">
+			<!-- lockscreen image -->
+			<div class="lockscreen-image">
+				<asset:image src="user.png" alt="imagen usuario" />
+			</div>
 		<!-- /.lockscreen-image -->
 		<!-- /.lockscreen-image -->
 
 		<!-- lockscreen credentials (contains the form) -->
-		<g:form method="post" class="lockscreen-credentials" action="forgotPassword" name="forgotPasswordForm" id="forgotPasswordForm">
-			<f:with bean="forgotPasswordCommand">
-				<div class="input-group">
-					<f:field property="username" label="Correo electrónico"></f:field>
+			<g:form method="post" class="lockscreen-credentials" action="forgotPassword" name="forgotPasswordForm" id="forgotPasswordForm">
+				<f:with bean="forgotPasswordCommand">
+					<div class="input-group">
+						<f:field property="username" label="Correo electrónico"></f:field>
 
-					<div class="input-group-btn">
-						<button type="submit" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+						<div class="input-group-btn">
+							<button type="submit" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+						</div>
 					</div>
-				</div>
-			</f:with>
-		</g:form>
+				</f:with>
+			</g:form>
 		<!-- /.lockscreen credentials -->
 
-	</div>
-	<!-- /.lockscreen-item -->
+		</div>
+		<!-- /.lockscreen-item -->
+
+	</g:else>
+
 	<div class="help-block text-center">
 		Ingresa tu correo para recuperar tu cuenta
 	</div>

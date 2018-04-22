@@ -1,7 +1,10 @@
-<g:message code="spring.security.ui.forgotPassword.email.greeting" args="${[username]}"/>,<br/>
+Hola ${username},<br/>
 <br/>
-<g:message code="spring.security.ui.forgotPassword.email.line1"/><br/>
+Tú (o alguien que pretende ser tú) solicitaste reestablecer tu contraseña.<br/>
 <br/>
-<g:message code="spring.security.ui.forgotPassword.email.line2"/><br/>
+Si tú no hiciste la solicitud para reestablecer tu contraseña, ignora este mensaje; no se harán cambios<br/>
 <br/>
-<g:message code="spring.security.ui.forgotPassword.email.line3"/> <a href="${url}"><g:message code="spring.security.ui.forgotPassword.email.here"/></a> <g:message code="spring.security.ui.forgotPassword.email.line4"/>
+Si tú solicitaste reestablecer tu contraseña, entonces haz click <a href="${url}">aquí</a> para reestablecer tu contraseña. <br/>
+<br/>
+<br/>
+Equipo de Tecnosalle.
