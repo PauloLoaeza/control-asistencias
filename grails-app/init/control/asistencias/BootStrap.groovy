@@ -21,7 +21,7 @@ class BootStrap {
                     //.save(failOnError: true)
 
             //def superUser = new Usuario(username: "super@tecnosalle.com", password: "super")
-            def adminUser = new Usuario(username: "admin@tecnosalle.com", password: "admin")
+            def adminUser = new Usuario(username: "luis.loaezagar@gmail.com", password: "admin")
             //def checkerUser = new Usuario(username: "checador@tecnosalle.com", password: "checador")
 
             def rey = new Empleado(

@@ -63,7 +63,7 @@
             </div>
         </form>
 
-        <a href="${createLink(uri: '/olvidePassword')}">Olvidé mi contraseña</a>
+        <a href="${createLink(uri: '/register/forgotPassword')}">Olvidé mi contraseña</a>
 
     </div>
     <!-- /.login-box-body -->
