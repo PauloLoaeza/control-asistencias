@@ -10,7 +10,6 @@ class UrlMappings {
         }
 
         "/"(view:"/index")
-        "/olvidePassword"(view: '/olvidePassword')
         "500"(view:'/error')
         "404"(view:'/notFound')
     }

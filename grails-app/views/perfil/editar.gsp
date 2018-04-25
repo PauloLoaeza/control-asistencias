@@ -7,7 +7,7 @@
 <body>
 
 <content tag="nav">
-
+    <g:render template="/menu/menu" />
 </content>
 
 <content tag="header">

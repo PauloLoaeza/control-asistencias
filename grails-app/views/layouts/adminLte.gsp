@@ -25,6 +25,7 @@
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body class="layout-top-nav skin-red-light" style="height: auto; min-height: 100%;">
 
+<%@ page import="grails.plugin.springsecurity.SpringSecurityUtils" %>
 <g:set var="springSecurityService" bean="springSecurityService" />
 <div class="wrapper" style="height: auto; min-height: 100%;">
     <header class="main-header">
@@ -56,14 +57,14 @@
                                     <!-- The user image in the navbar-->
                                     <asset:image src="user.png" class="user-image" alt="Imagen usuario" />
                                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                    <span class="hidden-xs">${springSecurityService.currentUser.empleado}</span>
+                                    <span class="hidden-xs">${springSecurityService.currentUser.empleado ?: 'Checador'}</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- The user image in the menu -->
                                     <li class="user-header">
                                         <asset:image src="user.png" class="img-circle" alt="Imagen usuario" />
                                         <p>
-                                            ${springSecurityService.currentUser.empleado.nombreCompleto}
+                                            ${springSecurityService.currentUser.empleado?.nombreCompleto ?: 'Checador'}
                                             <small>
                                                 ${springSecurityService.currentUser.username}
                                             </small>
@@ -71,14 +72,19 @@
                                     </li>
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
-                                        <div class="pull-left">
-                                            <a href="${createLink(uri: '/perfil')}" class="btn btn-default btn-flat">
-                                                &nbsp;&nbsp;&nbsp;Mi perfil&nbsp;&nbsp;&nbsp;
-                                            </a>
-                                        </div>
-                                        <div class="pull-right">
+                                        <sec:access url="/perfil">
+                                            <div class="pull-left">
+                                                <a href="${createLink(uri: '/perfil')}" class="btn btn-default btn-flat">
+                                                    &nbsp;&nbsp;&nbsp;Mi perfil&nbsp;&nbsp;&nbsp;
+                                                </a>
+                                            </div>
+                                        </sec:access>
+
+                                        <div class="${SpringSecurityUtils.ifAnyGranted('ROLE_SUPERADMIN, ROLE_ADMIN') ? "pull-right" : ''} ">
                                             <g:form controller="logout">
-                                                <button type="submit" name="logout" class="btn btn-default btn-flat">Cerrar sesión</button>
+                                                <button type="submit" name="logout" class="btn btn-default btn-flat ${SpringSecurityUtils.ifAnyGranted('ROLE_SUPERADMIN, ROLE_ADMIN') ? '' : 'btn-block'}">
+                                                    Cerrar sesión
+                                                </button>
                                             </g:form>
                                         </div>
                                     </li>
