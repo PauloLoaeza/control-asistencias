@@ -7,7 +7,7 @@
         </a>
         <ul class="dropdown-menu" role="menu">
             <li><a href="${createLink(uri: '/administradores')}"><span class="fa fa-eye"></span> Ver administradores</a></li>
-            <li><a href="${createLink(uri: '/')}"><span class="fa fa-user-plus"></span> Registrar administrador</a></li>
+            <li><a href="${createLink(uri: '/administradores/nuevo')}"><span class="fa fa-user-plus"></span> Registrar administrador</a></li>
         </ul>
     </li>
     <li class="dropdown ${current == 'empleados' ? 'active' : ''}">

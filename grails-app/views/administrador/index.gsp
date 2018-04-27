@@ -24,6 +24,14 @@
     </ol>
 </content>
 
+<g:if test="${flash.message}">
+    <div class="alert alert-${flash.messageType} alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-${flash.icon}"></i>${flash.title}</h4>
+        ${flash.message}
+    </div>
+</g:if>
+
 <div class="box box-danger">
     <div class="box-header with-border">
         <h3 class="box-title">

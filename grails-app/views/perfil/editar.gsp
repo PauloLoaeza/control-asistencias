@@ -28,7 +28,7 @@
             <div class="box-body box-profile">
                 <asset:image src="user.png" class="profile-user-img img-responsive img-circle" alt="imagen usuario" />
 
-                <h3 class="profile-username text-center">${empleado}</h3>
+                <h3 class="profile-username text-center">${empleado.nombreCorto}</h3>
 
                 <p class="text-muted text-center">${empleado.cargo}</p>
 

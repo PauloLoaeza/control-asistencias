@@ -10,7 +10,7 @@ class Domicilio {
     String numeroInterior
     String codigoPostal
 
-    static belongsTo = [empleado: Empleado]
+    static belongsTo = Empleado
 
     static constraints = {
         calle shared: "domicilio"
@@ -22,8 +22,4 @@ class Domicilio {
         codigoPostal size: 3..6
     }
 
-    @Override
-    String toString() {
-        calle
-    }
 }

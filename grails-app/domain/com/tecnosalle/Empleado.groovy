@@ -33,12 +33,12 @@ class Empleado {
         genero enumType: "identity"
     }
 
+    String getNombreCorto() {
+        "${nombre?.split(" ")[0]} ${apellidoPaterno}"
+    }
+
     String getNombreCompleto() {
         "${nombre} ${apellidoPaterno} ${apellidoMaterno}"
     }
 
-    @Override
-    String toString() {
-        "${nombre.split(" ")[0]} ${apellidoPaterno}"
-    }
 }
