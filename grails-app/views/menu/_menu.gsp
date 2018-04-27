@@ -1,12 +1,12 @@
 <li class="${current == 'inicio' ? 'active' : ''}"><a href="${createLink(uri: '/')}"><span class="fa fa-home"></span> Inicio</a></li>
 
 <sec:access expression="hasRole('ROLE_SUPERADMIN')">
-    <li class="dropdown">
+    <li class="dropdown ${current == 'administradores' ? 'active' : ''}">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <span class="fa fa-users"></span> Administradores <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-            <li><a href="${createLink(uri: '/')}"><span class="fa fa-eye"></span> Ver administradores</a></li>
+            <li><a href="${createLink(uri: '/administradores')}"><span class="fa fa-eye"></span> Ver administradores</a></li>
             <li><a href="${createLink(uri: '/')}"><span class="fa fa-user-plus"></span> Registrar administrador</a></li>
         </ul>
     </li>

@@ -3,6 +3,9 @@ package control.asistencias
 class UrlMappings {
 
     static mappings = {
+
+        "/administradores" (controller: "administrador")
+
         "/$controller/$action?/$id?(.$format)?"{
             constraints {
                 // apply constraints here
