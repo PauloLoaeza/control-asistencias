@@ -27,6 +27,14 @@
             <li><a href="${createLink(uri: '/')}"><span class="fa fa-files-o"></span> Generar reporte</a></li>
         </ul>
     </li>
+    <li class="dropdown ${current == 'catalogos' ? 'active' : ''}">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="fa fa-th"></span> Catálogos <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="${createLink(uri: '/departamentos')}"><span class="fa fa-building"></span> Departamentos</a></li>
+        </ul>
+    </li>
 
 </sec:access>
 
