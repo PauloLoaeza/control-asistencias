@@ -42,7 +42,6 @@ class DepartamentoController {
             return [departamento: departamento]
         }
 
-        println(departamento.properties)
         departamento.save(flush: true)
 
         flash.icon = "check"
@@ -54,12 +53,11 @@ class DepartamentoController {
     }
 
     protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = "No se encotró en departamento"
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
+        flash.icon = "warning"
+        flash.messageType = "warning"
+        flash.title = "Departamento no encontrado"
+        flash.message = "No se ha encontrado el departamento solicitado"
+
+        redirect(action: "index")
     }
 }

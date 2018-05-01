@@ -37,6 +37,9 @@
         <h3 class="box-title">
             Lista de Administradores
         </h3>
+        <p class="pull-right">
+            <g:link action="nuevo" class="btn btn-primary"> Registrar administrador</g:link>
+        </p>
     </div>
     <div class="box-body">
         <div class="table-responsive">
@@ -48,6 +51,7 @@
                     <th>Nombre(s)</th>
                     <th>Apellido Paterno</th>
                     <th>Apellido Materno</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -58,6 +62,11 @@
                         <td>${it.nombre}</td>
                         <td>${it.apellidoPaterno}</td>
                         <td>${it.apellidoMaterno}</td>
+                        <td style="width: 130px;">
+                            <g:link action="mostrar" id="${it.id}" class="btn btn-primary"><i class="fa fa-eye"></i></g:link>
+                            <g:link action="editar" id="${it.id}" class="btn btn-success"><i class="fa fa-edit"></i></g:link>
+                            <g:link action="eliminar" id="${it.id}" class="btn btn-danger"><i class="fa fa-trash-o"></i></g:link>
+                        </td>
                     </tr>
                 </g:each>
                 </tbody>

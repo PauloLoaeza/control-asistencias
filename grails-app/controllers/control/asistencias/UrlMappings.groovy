@@ -7,6 +7,9 @@ class UrlMappings {
         group "/administradores", {
             "/" (controller: "administrador", action: "index")
             "/nuevo" (controller: "administrador", action: "nuevo")
+            "/mostrar/$id" (controller: "administrador", action: "mostrar")
+            "/editar/$id" (controller: "administrador", action: "editar")
+            "/eliminar/$id" (controller: "administrador", action: "eliminar")
         }
 
         group "/departamentos", {
