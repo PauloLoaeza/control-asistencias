@@ -9,7 +9,7 @@ class Empleado {
     String telefonoCelular
     String telefonoCasa
     String cargo
-
+    boolean isAdmin
     Date dateCreated
     Departamento departamento
     Domicilio domicilio

@@ -23,11 +23,22 @@
     </ol>
 </content>
 
+<g:if test="${flash.message}">
+    <div class="alert alert-${flash.messageType} alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-${flash.icon}"></i>${flash.title}</h4>
+        ${flash.message}
+    </div>
+</g:if>
+
 <div class="box box-danger">
     <div class="box-header with-border">
         <h3 class="box-title">
             Lista de Empleados
         </h3>
+        <div class="pull-right">
+            <g:link action="nuevo" class="btn btn-primary">Registrar empleado</g:link>
+        </div>
     </div>
     <div class="box-body">
         <div class="table-responsive">
@@ -36,9 +47,8 @@
                     <tr>
                         <th>Código</th>
                         <th>Desde</th>
-                        <th>Nombre(s)</th>
-                        <th>Apellido Paterno</th>
-                        <th>Apellido Materno</th>
+                        <th>Nombre</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,9 +56,12 @@
                         <tr>
                             <td>${it.codigo}</td>
                             <td><g:formatDate date="${it.dateCreated}" format="dd/MM/yyyy" /> </td>
-                            <td>${it.nombre}</td>
-                            <td>${it.apellidoPaterno}</td>
-                            <td>${it.apellidoMaterno}</td>
+                            <td>${it.nombreCompleto}</td>
+                            <td style="width: 150px">
+                                <g:link action="mostrar" id="${it.id}" class="btn btn-primary"><i class="fa fa-eye"></i></g:link>
+                                <g:link action="editar" id="${it.id}" class="btn btn-success"><i class="fa fa-edit"></i></g:link>
+                                <g:link action="eliminar" id="${it.id}" class="btn btn-danger"><i class="fa fa-trash"></i></g:link>
+                            </td>
                         </tr>
                     </g:each>
                 </tbody>
@@ -57,14 +70,52 @@
     </div>
 </div>
 
+<div class="box box-warning">
+    <div class="box-header with-border">
+        <h3 class="box-title">
+            Lista de Administradores
+        </h3>
+    </div>
+    <div class="box-body">
+        <div class="table-responsive">
+            <table id="table-admins" class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Desde</th>
+                    <th>Nombre</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <g:each in="${administradores}">
+                    <tr>
+                        <td>${it.codigo}</td>
+                        <td><g:formatDate date="${it.dateCreated}" format="dd/MM/yyyy" /> </td>
+                        <td>${it.nombreCompleto}</td>
+                        <td style="width: 150px">
+                            <g:link action="mostrar" id="${it.id}" class="btn btn-primary"><i class="fa fa-eye"></i></g:link>
+
+                            <sec:access expression="hasRole('ROLE_SUPERADMIN')">
+                                <g:link action="editar" id="${it.id}" class="btn btn-success"><i class="fa fa-edit"></i></g:link>
+                                <g:link action="eliminar" id="${it.id}" class="btn btn-danger"><i class="fa fa-trash"></i></g:link>
+                            </sec:access>
+                        </td>
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <content tag="scripts">
     <asset:javascript src="jquery.dataTables.min.js" />
     <asset:javascript src="dataTables.bootstrap.min.js" />
 
     <script type="text/javascript">
         $(function () {
-            $('#table-empleados').dataTable({
-                "lengthMenu": [[50, 100, -1], [50, 100, "Todos"]],
+            $('#table-empleados, #table-admins').dataTable({
+                "lengthMenu": [[15, 30, -1], [15, 30, "Todos"]],
                 "autoWidth": false,
                 "order": [[0, "desc"]],
                 "language": {

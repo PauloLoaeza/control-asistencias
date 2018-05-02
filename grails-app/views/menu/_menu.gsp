@@ -15,8 +15,8 @@
             <span class="fa fa-users"></span> Empleados <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-            <li><a href="${createLink(uri: '/empleado')}"><span class="fa fa-eye"></span> Ver empleados</a></li>
-            <li><a href="${createLink(uri: '/')}"><span class="fa fa-user-plus"></span> Registrar empleado</a></li>
+            <li><a href="${createLink(uri: '/empleados')}"><span class="fa fa-eye"></span> Ver empleados</a></li>
+            <li><a href="${createLink(uri: '/empleados/nuevo')}"><span class="fa fa-user-plus"></span> Registrar empleado</a></li>
         </ul>
     </li>
     <li class="dropdown">
@@ -44,8 +44,8 @@
             <span class="fa fa-users"></span> Empleados <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-            <li><a href="${createLink(uri: '/empleado')}"><span class="fa fa-eye"></span> Ver empleados</a></li>
-            <li><a href="${createLink(uri: '/')}"><span class="fa fa-user-plus"></span> Registrar empleado</a></li>
+            <li><a href="${createLink(uri: '/empleados')}"><span class="fa fa-eye"></span> Ver empleados</a></li>
+            <li><a href="${createLink(uri: '/empleados/nuevo')}"><span class="fa fa-user-plus"></span> Registrar empleado</a></li>
         </ul>
     </li>
     <li class="dropdown">

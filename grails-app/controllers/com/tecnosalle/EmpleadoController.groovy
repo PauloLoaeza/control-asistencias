@@ -1,105 +1,105 @@
 package com.tecnosalle
 
+import grails.gorm.transactions.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_SUPERADMIN', 'ROLE_ADMIN'])
 class EmpleadoController {
 
-    EmpleadoService empleadoService
-
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
     def index() {
-        [empleados: empleadoService.list()]
+        def empleados = Empleado.where {
+            isAdmin == false
+        }.list()
+
+        def admins = Empleado.where {
+            isAdmin == true
+        }.list()
+
+        [empleados: empleados, administradores: admins]
     }
 
-    /*
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond empleadoService.list(params), model:[empleadoCount: empleadoService.count()]
+    @Transactional
+    def nuevo(Empleado empleado) {
+        if (!request.post) {
+            return [empleado: new Empleado()]
+        }
+
+        if (empleado.hasErrors()) {
+            return [empleado: empleado]
+        }
+
+        empleado.save(flush: true)
+
+        flash.icon = "check"
+        flash.messageType = "success"
+        flash.title = "Empleado registrado"
+        flash.message = "El empleado se ha registrado correctamente"
+
+        redirect(action: "index")
     }
 
-    def show(Long id) {
-        respond empleadoService.get(id)
-    }
-
-    def create() {
-        respond new Empleado(params)
-    }
-
-    def save(Empleado empleado) {
+    def mostrar(Empleado empleado) {
         if (empleado == null) {
             notFound()
             return
         }
 
-        try {
-            empleadoService.save(empleado)
-        } catch (ValidationException e) {
-            respond empleado.errors, view:'create'
-            return
-        }
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'empleado.label', default: 'Empleado'), empleado.id])
-                redirect empleado
-            }
-            '*' { respond empleado, [status: CREATED] }
-        }
+        [empleado: empleado]
     }
 
-    def edit(Long id) {
-        respond empleadoService.get(id)
-    }
-
-    def update(Empleado empleado) {
+    @Transactional
+    def editar(Empleado empleado) {
         if (empleado == null) {
             notFound()
             return
         }
 
-        try {
-            empleadoService.save(empleado)
-        } catch (ValidationException e) {
-            respond empleado.errors, view:'edit'
-            return
+        if (!request.post) {
+            return [empleado: empleado]
         }
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'empleado.label', default: 'Empleado'), empleado.id])
-                redirect empleado
-            }
-            '*'{ respond empleado, [status: OK] }
+        if (empleado.hasErrors()) {
+            return [empleado: empleado]
         }
+
+        empleado.save(flush: true)
+
+        flash.icon = "check"
+        flash.messageType = "success"
+        flash.title = "Empleado actualizado"
+        flash.message = "Se ha actualizado el empleado correctamente"
+
+        redirect(action: "index")
     }
 
-    def delete(Long id) {
-        if (id == null) {
+    @Transactional
+    def eliminar(Empleado empleado) {
+        if (empleado == null) {
             notFound()
             return
         }
 
-        empleadoService.delete(id)
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'empleado.label', default: 'Empleado'), id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
+        if (!request.post) {
+            return [empleado: empleado]
         }
+
+        empleado.delete(flush: true)
+
+        flash.icon = "check"
+        flash.messageType = "success"
+        flash.title = "Empleado eliminado"
+        flash.message = "Se ha eliminado correctamente el empleado"
+
+        redirect(action: "index")
     }
 
     protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'empleado.label', default: 'Empleado'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
+        flash.icon = "warning"
+        flash.messageType = "warning"
+        flash.title = "Empleado no encontrado"
+        flash.message = "No se ha encontrado el empleado solicitado"
+
+        redirect(action: "index")
     }
-    */
+
 }

@@ -13,9 +13,17 @@ class UrlMappings {
         }
 
         group "/departamentos", {
-            "/" (controller: "departamento", action: "index")
-            "/nuevo" (controller: "departamento", action: "nuevo")
+            "/"(controller: "departamento", action: "index")
+            "/nuevo"(controller: "departamento", action: "nuevo")
             "/editar/$id"(controller: "departamento", action: "editar")
+        }
+
+        group "/empleados", {
+            "/" (controller: "empleado", action: "index")
+            "/nuevo" (controller: "empleado", action: "nuevo")
+            "/mostrar/$id" (controller: "empleado", action: "mostrar")
+            "/editar/$id" (controller: "empleado", action: "editar")
+            "/eliminar/$id" (controller: "empleado", action: "eliminar")
         }
 
         "/$controller/$action?/$id?(.$format)?"{

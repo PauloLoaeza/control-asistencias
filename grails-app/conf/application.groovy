@@ -32,7 +32,7 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 
 grails.gorm.default.constraints = {
 	domicilio nullable: false, size: 3..40
-	personName nullable: false, size: 3..35, matches: "^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ']+\$"
+	personName nullable: false, size: 3..35
 }
 
 grails.mail.host = 'smtp.gmail.com'

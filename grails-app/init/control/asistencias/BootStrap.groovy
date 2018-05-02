@@ -40,6 +40,7 @@ class BootStrap {
                     telefonoCelular: '9516513456',
                     cargo: 'Administrador del sistema SCA',
                     genero: Genero.MASCULINO,
+                    isAdmin: true,
                     domicilio: new Domicilio(
                             calle: '21 de octubre',
                             colonia: 'Unidad Modelo',
@@ -61,6 +62,7 @@ class BootStrap {
                     telefonoCelular: '9516513456',
                     cargo: 'Administrador del sistema SCA',
                     genero: Genero.MASCULINO,
+                    isAdmin: true,
                     domicilio: new Domicilio(
                             calle: 'Calle',
                             colonia: 'Colonia',
@@ -82,6 +84,7 @@ class BootStrap {
                     telefonoCelular: '9516513456',
                     cargo: 'Administrador del sistema SCA',
                     genero: Genero.MASCULINO,
+                    isAdmin: true,
                     domicilio: new Domicilio(
                             calle: 'Calle',
                             colonia: 'Colonia',
@@ -103,6 +106,7 @@ class BootStrap {
                     telefonoCelular: '9516513456',
                     cargo: 'Administrador del sistema SCA',
                     genero: Genero.MASCULINO,
+                    isAdmin: true,
                     domicilio: new Domicilio(
                             calle: 'Calle',
                             colonia: 'Colonia',
@@ -125,6 +129,31 @@ class BootStrap {
                 it.flush()
                 it.clear()
             }
+
+
+            //Generación de empleados
+            100.times { i ->
+                new Empleado(
+                        codigo: "CODIGO${i}",
+                        nombre: "NOMBRE ${i}",
+                        apellidoPaterno: "PATERNO",
+                        apellidoMaterno: "MATERNO" ,
+                        telefonoCasa: "CASA ${i}",
+                        telefonoCelular: "CELULAR ${i}",
+                        cargo: 'Empleado',
+                        genero: Genero.MASCULINO,
+                        domicilio: new Domicilio(
+                                calle: "CALLE ${i}",
+                                colonia: "Colonia ${i}",
+                                municipio: "Municipio ${i}",
+                                entidadFederativa: "Estado ${i}",
+                                numeroExterior: "${i}",
+                                codigoPostal: "5155${i}"
+                        ),
+                        departamento: administracion
+                ).save(failOnError: true)
+            }
+
         }
     }
     def destroy = {
