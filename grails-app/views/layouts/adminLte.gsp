@@ -58,7 +58,7 @@
                                     <!-- The user image in the navbar-->
                                     <asset:image src="user.png" class="user-image" alt="Imagen usuario" />
                                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                    <span class="hidden-xs">${springSecurityService.currentUser.empleado.nombreCorto ?: 'Checador'}</span>
+                                    <span class="hidden-xs">${springSecurityService.currentUser.empleado?.nombreCorto ?: 'Checador'}</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- The user image in the menu -->

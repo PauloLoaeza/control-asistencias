@@ -17,14 +17,16 @@
         <ul class="dropdown-menu" role="menu">
             <li><a href="${createLink(uri: '/empleados')}"><span class="fa fa-eye"></span> Ver empleados</a></li>
             <li><a href="${createLink(uri: '/empleados/nuevo')}"><span class="fa fa-user-plus"></span> Registrar empleado</a></li>
+            <li class="divider"></li>
+            <li><a href="${createLink(uri: '/asistencias')}"><span class="fa fa-check-square-o"></span> Asistencias</a></li>
         </ul>
     </li>
-    <li class="dropdown">
+    <li class="dropdown ${current == 'reportes' ? 'active' : ''}" >
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <span class="fa fa-file-text"></span> Reportes <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-            <li><a href="${createLink(uri: '/')}"><span class="fa fa-files-o"></span> Generar reporte</a></li>
+            <li><a href="${createLink(uri: '/reportes')}"><span class="fa fa-files-o"></span> Generar reporte</a></li>
         </ul>
     </li>
     <li class="dropdown ${current == 'catalogos' ? 'active' : ''}">
@@ -46,14 +48,16 @@
         <ul class="dropdown-menu" role="menu">
             <li><a href="${createLink(uri: '/empleados')}"><span class="fa fa-eye"></span> Ver empleados</a></li>
             <li><a href="${createLink(uri: '/empleados/nuevo')}"><span class="fa fa-user-plus"></span> Registrar empleado</a></li>
+            <li class="divider"></li>
+            <li><a href="${createLink(uri: '/asistencias')}"><span class="fa fa-check-square-o"></span> Asistencias</a></li>
         </ul>
     </li>
-    <li class="dropdown">
+    <li class="dropdown ${current == 'reportes' ? 'active' : ''}">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <span class="fa fa-file-text"></span> Reportes <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-            <li><a href="${createLink(uri: '/')}"><span class="fa fa-files-o"></span> Generar reporte</a></li>
+            <li><a href="${createLink(uri: '/reportes')}"><span class="fa fa-files-o"></span> Generar reporte</a></li>
         </ul>
     </li>
 </sec:access>

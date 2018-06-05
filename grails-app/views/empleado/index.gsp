@@ -48,7 +48,7 @@
                         <th>Código</th>
                         <th>Desde</th>
                         <th>Nombre</th>
-                        <th></th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,11 +56,11 @@
                         <tr>
                             <td>${it.codigo}</td>
                             <td><g:formatDate date="${it.dateCreated}" format="dd/MM/yyyy" /> </td>
-                            <td>${it.nombreCompleto}</td>
-                            <td style="width: 150px">
-                                <g:link action="mostrar" id="${it.id}" class="btn btn-primary"><i class="fa fa-eye"></i></g:link>
+                            <td><g:link action="mostrar" id="${it.id}">${it.nombreCompleto}</g:link></td>
+                            <td style="width: 200px">
                                 <g:link action="editar" id="${it.id}" class="btn btn-success"><i class="fa fa-edit"></i></g:link>
                                 <g:link action="eliminar" id="${it.id}" class="btn btn-danger"><i class="fa fa-trash"></i></g:link>
+                                <g:link controller="asistencia" action="index" id="${it.id}" class="btn btn-warning" ><i class="fa fa-file-text"></i></g:link>
                             </td>
                         </tr>
                     </g:each>

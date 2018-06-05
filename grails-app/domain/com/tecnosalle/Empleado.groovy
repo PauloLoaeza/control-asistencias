@@ -16,6 +16,8 @@ class Empleado {
     Genero genero
     Usuario usuario
 
+    static hasMany = [asistencias: Asistencia]
+
     static constraints = {
         codigo unique: true, size: 4..19
         nombre shared: "personName"

@@ -47,7 +47,7 @@
                         <th>Código</th>
                         <th>Nombre</th>
                         <th>Descripción</th>
-                        <th></th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,7 +57,7 @@
                             <td>${it.nombre}</td>
                             <td>${it.descripcion}</td>
                             <td>
-                                <g:link action="editar" id="${it.id}" class="btn btn-default btn-block"><span class="fa fa-edit"></span> Editar</g:link>
+                                <g:link action="editar" id="${it.id}"><span class="fa fa-edit"></span> Editar</g:link>
                             </td>
                         </tr>
                     </g:each>

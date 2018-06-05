@@ -24,6 +24,16 @@ class UrlMappings {
             "/mostrar/$id" (controller: "empleado", action: "mostrar")
             "/editar/$id" (controller: "empleado", action: "editar")
             "/eliminar/$id" (controller: "empleado", action: "eliminar")
+
+            "/$id/asistencias" (controller: "asistencia", action: "index")
+        }
+
+        group  "/asistencias", {
+            "/" (controller: "asistencia", action: "home")
+        }
+
+        group "/reportes", {
+            "/" (controller: "reporte", action: "index")
         }
 
         "/$controller/$action?/$id?(.$format)?"{
