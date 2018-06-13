@@ -25,8 +25,8 @@ class ReporteController {
                     fin: new Date().toLocaleString()]
         }
 
-        def fechaInicio = Date.parse("dd/MM/yyyy", inicio)
-        def fechaFin = Date.parse("dd/MM/yyyy", fin)
+        def fechaInicio = Date.parse("dd/MM/yyyy hh:mm:ss", inicio)
+        def fechaFin = Date.parse("dd/MM/yyyy hh:mm:ss", fin)
 
         def seleccionado = Empleado.findById(empleado)
         def asistencias = Asistencia.withCriteria {

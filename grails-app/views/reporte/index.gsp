@@ -120,8 +120,8 @@
 
             function fechaSeleccionada(inicio, fin) {
                 $('#btn-rango span').html(inicio.format('MMMM D, YYYY') + ' - ' + fin.format('MMMM D, YYYY'));
-                $('#inicio').val(inicio.format('DD/MM/YYYY'));
-                $('#fin').val(fin.format('DD/MM/YYYY'));
+                $('#inicio').val(inicio.format('DD/MM/YYYY 00:00:00'));
+                $('#fin').val(fin.format('DD/MM/YYYY 23:59:59'));
             }
 
             $("#btn-rango").daterangepicker({
